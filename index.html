@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+<title>Yuka project</title>
+<style>
+    /* Styling for the button and text */
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="topbar">
+        <div class="logo">
+            <h1>Yuka</h1>
+            <img src="img/logo.jpg" alt="">
+        </div>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="#" onclick="showSection('introduction')">
+                    <i class="fas fa-book-open"></i>
+                    <div>Introduction</div>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('users')">
+                    <i class="fas fa-user"></i>
+                    <div>Users</div>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('food')">
+                    <i class="fas fa-utensils"></i>
+                    <div>Food Products</div>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('cosmetics')">
+                    <i class="fas fa-tint"></i>
+                    <div>Cosmetic Products</div>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('graphs')">
+                    <i class="fas fa-chart-bar"></i>
+                    <div>Graphs</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div id="introduction" class="section">
+            <div class="about-yuka">
+                <h2>About Yuka</h2>
+                <p>Yuka is a mobile application which allows you to scan food and cosmetic products in order to obtain detailed information about the impact of a product on health. The aim of the application is to help consumers choose products deemed good for their health and to encourage manufacturers to improve the composition of their products. This application works by scanning the barcode of the chosen product and returns a grade in the form of a color ranging from green (excellent) to red (bad). When the impact of a product is deemed negative, the application recommends similar products that are better for the health. Yuka bases its grade on the nutritional quality of the product which represents 60% of the grade, the presence of additives which represents 30% of the grade, and the organic aspect which represents the remaining 10% of the grade. </p>
+            </div>
+            <div class="chart-container">
+                <canvas id="gradingChart"></canvas>
+                <h3>Grade of Products</h3>
+            </div>
+            <div class="dashboard-info">
+                <h2>Data Analysis Dashboard</h2>
+                <p>The Yuka Data Analysis Dashboard is a tool designed to analyze the data collected from Yuka application. It provides insights into trends in food products, nutritional patterns, and more. Through visualizations and data summaries, this dashboard aims to assist in understanding and interpreting the data gathered by the Yuka application.</p>
+            </div>
+            <div class="future-work">
+                <h2>Future Work</h2>
+                <ul>
+                    <li>Incorporate additional data sources to enrich our analysis</li>
+                    <li>Analyze equilibrium effects</li>
+                    <li>Build predictive models to forecast user behavior</li>
+                </ul>
+            </div>
+        </div>
+        <div id="users" class="section hidden">
+            <div id="users-content">
+                <div id="users-table" class="user-table"></div>
+                <div id="nb-users" class="graph-container">
+                </div>
+            </div>
+        </div>
+        <div id="food" class="section hidden">
+            <p>Information about food products goes here.</p>
+            <div id="products-table" class="product-table"></div>
+        </div>
+        <div id="cosmetics" class="section hidden">
+            <p>Information about cosmetic products goes here.</p>
+        </div>
+        <div id="graphs" class="section hidden">
+        <div id="products-graph-container"></div>
+        <button onclick="addGraph()">Add One More Curve</button>
+        <button onclick="renderAllCurves()">Display Graph</button>        
+        <div id="graphContainer"></div>
+        <canvas id="graphsCanvas" width="200" height="200"></canvas>
+        </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src="src/gradechart.js"></script>
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        var sections = document.querySelectorAll('.section');
+        sections.forEach(function(section) {
+            section.classList.add('hidden');
+        });
+        
+        // Show the selected section
+        var selectedSection = document.getElementById(sectionId);
+        if (selectedSection) {
+            selectedSection.classList.remove('hidden');
+        }
+    }
+</script>
+<script src="src/users-table.js"></script>
+<script src="src/products-table.js"></script>
+<script src="src/graphs.js"></script>
+<script src="app.py"></script>
+</body>
+</html>

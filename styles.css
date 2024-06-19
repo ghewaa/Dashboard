@@ -1,0 +1,337 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topbar {
+    position: fixed;
+    background: #d5f5d5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0,02, 0.08);
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    width: 100%; /* Ensure the container spans the full width */
+}
+
+.logo h1 {
+    font-size: 60px;
+    font-family: 'Tangerine', sans-serif;
+    color: #299B63;
+    margin-right: 10px;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px; /* Add margin to separate the image from the title */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjust to match the height of the topbar */
+    left: 0;
+    width: 100%; /* Occupy the full width of the viewport */
+    height: 50px; /* Adjust the height as needed */
+    background-color: #299B63;
+    overflow-x: hidden;
+    z-index: 1; /* Ensure sidebar is above other content */
+}
+
+.sidebar ul {
+    display: flex; /* Display list items horizontally */
+    justify-content: space-around; /* Adjust the alignment as needed */
+    align-items: center;
+    padding: 0;
+}
+
+.sidebar ul li {
+    list-style: none;
+    color: #fff;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.sidebar ul li:hover{
+    background: #fff;
+}
+
+.sidebar ul li:hover a{
+    color: #299B63;
+}
+
+.sidebar ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+
+.sidebar ul li a i {
+    min-width: 50px;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* main section starts */ 
+
+.main { 
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    background: #f5f5f5;
+}
+
+.main {
+    padding: 20px;
+}
+
+.about-yuka,
+.dashboard-info {
+    margin-bottom: 30px;
+    width:75%;
+}
+
+h2 {
+    color: #299B63;
+}
+
+
+p {
+    line-height: 1.6;
+}
+
+
+.chart-container {
+    position: absolute;
+    top: 20px; /* Adjust as needed for positioning higher on the page */
+    right: 10px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto; /* Adjust margin for centering horizontally */
+}
+
+.chart-container canvas {
+    right: 10px; /* Adjust as needed for spacing */
+}
+
+.chart-container h3 {
+    position: absolute;
+    text-align: center;
+    right: 70px; /* Adjust as needed for spacing */
+    top: 100%; /* Position h3 below canvas */
+    margin-top: 5px; /* Adjust as needed for spacing between canvas and h3 */
+    font-size: 16px;
+}
+
+/* Style list items */
+.future-work ul li {
+    position: relative;
+    padding-left: 2px; /* Adjust as needed */
+    margin-bottom: 7px; /* Adjust as needed */
+    left: 15px;
+}
+
+
+/* charts starts here */ 
+
+.charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.chart h2 { 
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #666;
+    text-align: center;
+}
+
+/* Responsive starts here */ 
+
+@media (max-width:1115px){
+    .sidebar {
+        width: 60px; 
+    }
+    .main {
+        left: 60px;
+        width: calc(100% - 60px);
+    }
+}
+
+@media (max-width:880px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .charts {
+        grid-template-columns: 1fr;
+    }
+    #doughnut-chart {
+        padding: 50px;
+
+    }
+    #doughnut {
+        padding: 50px;
+
+    }    
+}
+
+@media (max-width:500px) {
+    .topbar {
+        grid-template-columns: 1fr 5fr 0.4fr 1fr;
+    }
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .logo h2 {
+        font-size: 20px;
+    }
+    .search { 
+        width: 80%;
+    }
+    .search input {
+        padding: 0 20px;
+    }
+    .fa-bell {
+        margin-right: 5px;
+    }
+    .user {
+        width: 40px;
+        height: 40px;
+    }
+    #doughnut-chart {
+        padding: 10px;
+    }
+    #doughnut {
+        padding: 0;
+    }
+} 
+
+
+#users-content {
+    display: flex; /* Use flexbox to arrange children side by side */
+    justify-content: space-between; /* Add space between table and image */
+}
+
+.user-table {
+    border-collapse: collapse;
+    width: 90%; /* Set the width of the table */
+    min-height: calc(100vh - 68%);
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.user-table tr:first-child {
+    background-color: #C8E6C9; 
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:hover {
+    background-color: #ddd;
+}
+
+.graph-container {
+    width: 55%; /* Increase the width of the image container */
+    margin-top: 15px; /* Add margin to the top to lower the image container */
+}
+
+.graph-container img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    max-height: 100%; /* Adjust the maximum height of the image */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+.user-table {
+    border-collapse: collapse;
+    width: 90%; /* Set the width of the table */
+    min-height: calc(100vh - 68%);
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.user-table tr:first-child {
+    background-color: #C8E6C9; 
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:hover {
+    background-color: #ddd;
+}
+
+
+.product-table {
+    border-collapse: collapse;
+    width: 90%; /* Set the width of the table */
+    min-height: calc(100vh - 68%);
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.product-table tr:first-child {
+    background-color: #C8E6C9; 
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.product-table tr:hover {
+    background-color: #ddd;
+}
