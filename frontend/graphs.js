@@ -37,28 +37,30 @@ function addGraphParameters() {
     // Populate parameters from the server
     fetchParameters(index);
 }
-https://user-az0-863873-0.user.lab.sspcloud.fr/proxy/42161
+
 function fetchParameters(index) {
-    const url = 'https://user-az0-863873-0.user.lab.sspcloud.fr/proxy/5000/parameters';
+    const url = 'http://localhost:5500/parameters';
     console.log(`Fetching parameters from: ${url}`); // Add logging
     fetch(url)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Received parameters:', data); // Add logging
-        populateSelectOptions(`categories${index}`, data.categories);
-        populateSelectOptions(`year${index}`, data.years);
-        populateSelectOptions(`presence${index}`, data.presences);
-        populateSelectOptions(`outcome${index}`, data.outcomes);
-        populateSelectOptions(`scans${index}`, data.scans);
-        populateSelectOptions(`weight${index}`, data.weights);
-    })
-    .catch(error => console.error('Error fetching parameters:', error));
+        .then(response => {
+            console.log(`Response status: ${response.status}`); // Add logging
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Received parameters:', data); // Add logging
+            populateSelectOptions(`categories${index}`, data.categories);
+            populateSelectOptions(`year${index}`, data.years);
+            populateSelectOptions(`presence${index}`, data.presences);
+            populateSelectOptions(`outcome${index}`, data.outcomes);
+            populateSelectOptions(`scans${index}`, data.scans);
+            populateSelectOptions(`weight${index}`, data.weights);
+        })
+        .catch(error => console.error('Error fetching parameters:', error));
 }
+
 
 
 function populateSelectOptions(selectId, options) {
@@ -90,7 +92,7 @@ async function renderAllCurves() {
 }
 
 function fetchGraph(category, year, presence, outcome, scans, weight, index) {
-    return fetch('https://user-az0-863873-0.user.lab.sspcloud.fr/proxy/5000/generate-graph', {
+    return fetch('http://localhost:5500/generate-graph', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

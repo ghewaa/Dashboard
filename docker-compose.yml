@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    build: .
+    ports:
+      - "5500:5500"
+    volumes:
+      - ./backend:/app/backend
+    environment:
+      - FLASK_ENV=development
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+
